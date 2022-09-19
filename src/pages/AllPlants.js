@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import New from './New'
+//import New from './New'
 const AllPlants = (props) => {
 const [plants, setPlants]= useState([])
 const URL= 'https://p3-plants.herokuapp.com/plants'
@@ -24,8 +24,10 @@ useEffect(()=>{getPlants()}, [])
         {plants ? plants.map((plant, idx)=>{
             return(
                 <div className='oneCard'>
+                    <Link to={`/${plant._id}`}>
                      <img src={plant.image} alt={plant.name} className='homeCardImage'/>
                      <h2>{plant.name}</h2>
+                     </Link>
                 </div >
             )
         }):
