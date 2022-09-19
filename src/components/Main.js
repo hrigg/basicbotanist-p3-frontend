@@ -2,7 +2,7 @@ import React from 'react'
 import {Routes, Route, Outlet} from 'react-router-dom'
 import AllPlants from '../pages/AllPlants'
 import Show from '../pages/Show'
-
+import New from '../pages/New'
 
 
 const Main = () => {
@@ -12,6 +12,7 @@ const Main = () => {
         <Routes>
             <Route path='/' element={<AllPlants />} />
             <Route path='/:id' element={<Show />} />
+            <Route path='/new' element={<New />} />
         </Routes>
 
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-
-
+import {Link} from 'react-router-dom'
+import New from './New'
 const AllPlants = (props) => {
 const [plants, setPlants]= useState([])
 const URL= 'https://p3-plants.herokuapp.com/plants'
@@ -30,6 +30,10 @@ useEffect(()=>{getPlants()}, [])
             )
         }):
         <h1>Loading Plants...</h1>}
+
+        Add a new plant: 
+        <Link to='/new'> Here</Link>
+        {/* <New getPlants={getPlants} setPlants={setPlants}/> */}
     </div>
   )
 }
