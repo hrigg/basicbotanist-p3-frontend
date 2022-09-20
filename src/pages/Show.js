@@ -9,9 +9,10 @@ const Show = () => {
     const [plant, setPlant]=useState(null)
     const {id}= useParams()
     const showURL= `https://p3-plants.herokuapp.com/plants/${id}`
+    const commentURL= `https://p3-plants.herokuapp.com/comments`
     const navigate= useNavigate()
     const [editForm, setEditForm]=useState(null)
-
+    const [comments, setComments]= useState(null)
     const getPlant= async ()=>{
         try{
             const response= await fetch(showURL)
@@ -76,7 +77,16 @@ const Show = () => {
             console.log(err)
         }
     }
-  
+    const getComments= async ()=> {
+        try{
+            const res= await fetch(commentURL)
+            const allComments= await res.json()
+            setComments(allComments)
+            console.log(allComments)
+        }catch(err){
+            console.log(err)
+        }
+    }
     useEffect(()=>{
         getPlant()
     },[])
