@@ -1,6 +1,7 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
-import AllPlants from './AllPlants'
+import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+//import AllPlants from './AllPlants'
 
 
 const New = () => {
@@ -8,6 +9,7 @@ const URL= 'https://p3-plants.herokuapp.com/plants'
 const initForm={name: '', image:'', imageTwo:'', type:'', description:''}
 const [newForm, setNewForm]= useState(initForm)
 const [plants, setPlants]= useState([])
+const navigate= useNavigate()
 const getPlants= async ()=> {
     try{
         const response= await fetch(URL)
@@ -32,6 +34,7 @@ const handleSubmit= async (e)=>{
     })
     getPlants(setPlants)
     setNewForm(initForm)
+    navigate('/')
 }catch(err){
     console.log(err)
 }
@@ -76,19 +79,28 @@ function handleChange(e){
                 name='imageTwo'
                 placeholder='Second Picture'
                 onChange={handleChange} />
-            <input
+            {/* <input
                 type='text'
                 value={newForm.type}
                 name='type'
                 placeholder='Type'
-                onChange={handleChange} />
+                onChange={handleChange} /> */}
+            <select value={newForm.type} name='type'
+            onChange={handleChange}>
+                <option value='Tree'onChange={handleChange}> Tree</option>
+                <option value='IndoorPlant'onChange={handleChange}> Indoor</option>
+                <option value='Shrub/Bush'onChange={handleChange}> Shrub/Bush</option>
+                <option value='FloweringPlant'onChange={handleChange}> Flower</option>
+                <option value='Cactus/Succulent'onChange={handleChange}> Cactus/ Succulent</option>
+                <option value='Other'> Other</option>
+            </select>
             <input
                 type='text'
                 value={newForm.description}
                 name='description'
                 placeholder='Description'
                 onChange={handleChange} />
-            
+             {/* <textarea  value={newForm.description} onChange={handleChange} /> */}
             <input type='submit' value='Add Plant' />
         </form>
 

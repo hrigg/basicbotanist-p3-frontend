@@ -1,16 +1,30 @@
 .App {
   text-align: center;
-}
+  background-color: rgb(47, 123, 47);
+  color: rgb(212, 212, 212);
 
+}
+.link{
+  text-decoration: none;
+  color: rgb(53, 57, 53);
+}
 
 .oneCard{
   border: 1px black solid;
   border-radius: 10%;
   height:300px;
   width: 300px;
+  background-color: rgb(101, 177, 101);
+  text-decoration: none;
 
 }
 .homeCardImage{
   height:200px;
   width: 200px;
+}
+
+.showImage{
+  height:300px;
+  width: 300px;
+  padding: 15px;
 }

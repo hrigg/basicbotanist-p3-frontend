@@ -24,9 +24,11 @@ useEffect(()=>{getPlants()}, [])
         {plants ? plants.map((plant, idx)=>{
             return(
                 <div className='oneCard'>
-                    <Link to={`/${plant._id}`}>
+                    <Link to={`/${plant._id}`} className="link">
+                        <div>
                      <img src={plant.image} alt={plant.name} className='homeCardImage'/>
                      <h2>{plant.name}</h2>
+                        </div>
                      </Link>
                 </div >
             )

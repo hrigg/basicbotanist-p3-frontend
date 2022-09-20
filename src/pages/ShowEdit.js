@@ -1,11 +1,11 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import {useParams, useNavigate, Link} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import EditForm from './EditForm'
 
 
 
-const Show = () => {
+const ShowEdit = () => {
     const [plant, setPlant]=useState(null)
     const {id}= useParams()
     const showURL= `https://p3-plants.herokuapp.com/plants/${id}`
@@ -64,7 +64,26 @@ const Show = () => {
         setEditForm({...editForm, [e.target.name]: e.target.value})
         console.log(editForm)
     }
-
+    // const handleSubmit= async (e)=> {
+    //     try{ e.preventDefault()
+    //     //  const updatedPlant={...editForm}
+    //     //  const options={
+    //     //    method:'PUT',
+    //     //    headers:{
+    //     //     "Content-Type": "application/json"
+    //     // },
+    //     //    body: JSON.stringify(updatedPlant)
+    //     //    }
+    //     //    const response= await fetch(showURL, options)
+    //     //    console.log('fetch repsonse', response)
+    //     //    console.log(updatedPlant)
+       
+    //     //    //getWizards(setWizards)
+    //     //    setEditForm(updatedPlant)
+    //        }catch(err){
+    //         console.log(err)
+    //     }
+    //    }
     const removePlant = async ()=>{
         try{
             const options={method: "DELETE"}
@@ -76,7 +95,6 @@ const Show = () => {
             console.log(err)
         }
     }
-  
     useEffect(()=>{
         getPlant()
     },[])
@@ -87,10 +105,9 @@ const Show = () => {
         <button className='deleteButton' onClick={removePlant}>
             Remove Plant
         </button>
-        <Link to={`/${id}/edit`} > Edit Plant Entry</Link>
-        {/* {editForm? <>
+        {editForm? <>
             <EditForm plantData={editForm} handleChange={handleChange} updatePlant={updatePlant}/>
-        </>: <h1> Loading....</h1>} */}
+        </>: <h1> Loading....</h1>}
       
     </div>
   )
@@ -99,4 +116,4 @@ const Show = () => {
   
 }
 
-export default Show
+export default ShowEdit
