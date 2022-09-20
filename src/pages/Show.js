@@ -11,6 +11,8 @@ const Show = () => {
     console.log(id)
     const showURL= `https://p3-plants.herokuapp.com/plants/${id}`
     const commentURL= `https://p3-plants.herokuapp.com/comments`
+    const commentDeleteURL= `https://p3-plants.herokuapp.com/comments/${id}`
+
     const navigate= useNavigate()
     const initComment={title:'', comment:''}
     //const [editForm, setEditForm]=useState(null)
@@ -79,6 +81,17 @@ const Show = () => {
             console.log(err)
         }
     }
+    const removeComment = async ()=>{
+        try{
+            const options={method: "DELETE"}
+            const res= await fetch(commentDeleteURL, options)
+            const deletedComment= await res.json()
+            navigate('/')
+
+        }catch(err){
+            console.log(err)
+        }
+    }
     const getComments= async ()=> {
         try{
             const res= await fetch(commentURL)
@@ -101,26 +114,6 @@ const Show = () => {
             Remove Plant
         </button>
         <Link to={`/${id}/edit`} > Edit Plant Entry</Link>
-        {/* <p> 
-        {comments ? comments.map((comment, idx)=>{
-        //     console.log('comment', comment.plants)
-           console.log('id',plant._id)
-        //     console.log(comment.plants==={id})
-        //    // const plantId= {_id}.toString()
-        //     const commentId= (comment.plants).toString()
-        //    // console.log('test', plantId, commentId)
-        
-           if (comment.plants===plant._id){
-           return(
-                <div className='oneCard'>    
-                     <h2>{comment.title}</h2>
-                     <h2>{comment.comment}</h2>
-                </div >
-            )}else{
-                <div> Comments</div>
-            }
-        }):
-        <h1>Loading Comments...</h1>}</p> */}
       
       <div className='commentForm'>
         <form onSubmit={handleSubmit} >
@@ -145,6 +138,24 @@ const Show = () => {
 
         </form>
       </div>
+        <div className='commentSection'>
+        <h1> {comments ? comments.map((comment, idx)=>{
+         
+            if (id===comment.plants){
+            return(
+                <div className='oneCard'>
+                  <div className='commentTitle'>{comment.title}</div> 
+                  <div className='commentcomment'>{comment.comment}</div> 
+                  <button className='deleteButton' onClick={removeComment}>
+            Remove Comment
+        </button>
+                </div >
+            )}
+            else{<div> loading</div>}
+        }):
+        <h1>Loading Plants...</h1>}
+        </h1>
+        </div>
     </div>
   )
        

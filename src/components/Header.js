@@ -11,6 +11,9 @@ const Header = () => {
         <Link to='/' className="link">
             🍃 BasicBotanist 🍃 
         </Link>
+        <Link to='/new' className="footerLink">
+            🍃 Add New Plant 🍃 
+        </Link>
     </div>
   )
 }
