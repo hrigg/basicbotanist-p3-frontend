@@ -29,8 +29,8 @@ const ShowEdit = () => {
             <h2> {plant.name}</h2>
             <img src={plant.image} className="showImage showImageOne"/>
             <img src={plant.imageTwo} className="showImage showImagetwo"/>
-            <h3> {plant.type}</h3>
-            <p> {plant.description}</p>
+            <h3> Type: {plant.type}</h3>
+            <p> About: {plant.description}</p>
         </div>
     )
     const loading =() =>{
@@ -52,6 +52,7 @@ const ShowEdit = () => {
             setPlant(updatedPlant)
             console.log(updatedPlant)
             setEditForm(updatedPlant)
+            navigate(`/${id}`)
 
         } catch (err) {
             console.log(err)
@@ -102,13 +103,13 @@ const ShowEdit = () => {
   return(
     <div>
         {  plant ? loaded() : loading()}
-        <button className='deleteButton' onClick={removePlant}>
-            Remove Plant
-        </button>
+        
         {editForm? <>
             <EditForm plantData={editForm} handleChange={handleChange} updatePlant={updatePlant}/>
         </>: <h1> Loading....</h1>}
-      
+        <button className='deleteButton' onClick={removePlant}>
+            Remove Plant
+        </button>
     </div>
   )
        

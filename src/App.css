@@ -4,11 +4,26 @@
   color: rgb(212, 212, 212);
 
 }
+
+.allBody{
+  display: flex;
+  flex-wrap: wrap;
+}
 .link{
   text-decoration: none;
   color: rgb(53, 57, 53);
 }
-
+.footerLink{
+  text-decoration: none;
+  color: rgb(192, 204, 192);
+  font-weight: 10;
+}
+.footer{
+  font-size: 30px;
+}
+.header{
+  font-size: 30px;
+}
 .oneCard{
   border: 1px black solid;
   border-radius: 10%;
@@ -27,4 +42,8 @@
   height:300px;
   width: 300px;
   padding: 15px;
+}
+
+.deleteButton{
+ text-decoration: none;
 }

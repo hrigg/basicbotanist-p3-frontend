@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-//import New from './New'
+import Footer from '../components/Footer'
 const AllPlants = (props) => {
 const [plants, setPlants]= useState([])
 const URL= 'https://p3-plants.herokuapp.com/plants'
@@ -19,8 +19,9 @@ const getPlants= async ()=> {
 
 useEffect(()=>{getPlants()}, [])
   return (
-    <div>
-        <h1> All Plants: </h1>
+    <div className='allBody'>
+        <h1> All Plants: </h1> 
+       
         {plants ? plants.map((plant, idx)=>{
             return(
                 <div className='oneCard'>
@@ -35,8 +36,8 @@ useEffect(()=>{getPlants()}, [])
         }):
         <h1>Loading Plants...</h1>}
 
-        Add a new plant: 
-        <Link to='/new'> Here</Link>
+        <Footer />
+        {/* <Link to='/new'> Here</Link> */}
         {/* <New getPlants={getPlants} setPlants={setPlants}/> */}
     </div>
   )

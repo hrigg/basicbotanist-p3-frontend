@@ -59,7 +59,7 @@ function handleChange(e){
 // }
   return (
     <div>
-        New Plant form 
+       Add a New Plant to Basic Botanist Collection
         <form onSubmit={handleSubmit} >
             <input
                 type='text'
