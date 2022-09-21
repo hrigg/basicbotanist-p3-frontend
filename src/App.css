@@ -1,13 +1,33 @@
-.App {
+
+.App{
   text-align: center;
-  background-color: rgb(47, 123, 47);
-  color: rgb(212, 212, 212);
+  background-color: rgb(182, 238, 182);
+  color: rgb(5, 66, 15);
+  font-family: 'Arimo', sans-serif;
+  height:100%;
+  width: 100%;
+  background-size: cover;
+ 
 
 }
-
+.wholeShow{
+  background-size: cover;
+  height: 100vw;
+  padding: 10px;
+  margin: 10px;
+}
 .allBody{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+}
+.allCards{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
 }
 .link{
   text-decoration: none;
@@ -20,9 +40,12 @@
 }
 .footer{
   font-size: 30px;
+  background-color: rgb(47, 123, 47);
 }
 .header{
   font-size: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 .oneCard{
   border: 1px black solid;
@@ -31,11 +54,14 @@
   width: 300px;
   background-color: rgb(101, 177, 101);
   text-decoration: none;
+  padding: 5px;
+  margin: 5px;
 
 }
 .homeCardImage{
   height:200px;
   width: 200px;
+  border-radius: 5%;
 }
 
 .showImage{
@@ -46,4 +72,65 @@
 
 .deleteButton{
  text-decoration: none;
+}
+
+.commentSection{
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+.oneComment{
+  border: 1px black solid;
+  border-radius: 10%;
+  height:200px;
+  width: 200px;
+  font-size: 20px;
+  background-color: rgb(101, 177, 101);
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.deleteCommentButton{
+  font-size: 5px;
+}
+/* /
+NEW FORM
+ */
+
+ .newForm{
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+  height: 100vw;
+  color: #eee;
+
+ }
+ .titleForm{
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.descriptionInput{
+  width: 250px;
+  height: 200px;
 }

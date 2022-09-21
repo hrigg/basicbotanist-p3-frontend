@@ -58,35 +58,38 @@ function handleChange(e){
 //     }
 // }
   return (
-    <div>
-       Add a New Plant to Basic Botanist Collection
+    <div className='newForm'>
+      <div className='titleForm'> Add a New Plant to Basic Botanist Collection</div>
+      <div className='inputContainer'>
         <form onSubmit={handleSubmit} >
+        <label  className='label'> Name:</label>
             <input
+                className='input'
                 type='text'
                 value={newForm.name}
                 name='name'
                 placeholder='Plant Name'
                 onChange={handleChange} />
+            <label  className='label'> First Image:</label>
             <input
+                className='input'
                 type='text'
                 value={newForm.image}
                 name='image'
-                placeholder='First Picture'
+                placeholder='First Picture URL'
                 onChange={handleChange} />
+             <label  className='label'> Second Image:</label>
             <input
+                className='input'
                 type='text'
                 value={newForm.imageTwo}
                 name='imageTwo'
-                placeholder='Second Picture'
+                placeholder='Second Picture URL'
                 onChange={handleChange} />
-            {/* <input
-                type='text'
-                value={newForm.type}
-                name='type'
-                placeholder='Type'
-                onChange={handleChange} /> */}
+            <label  className='label'> Category:</label>
             <select value={newForm.type} name='type'
-            onChange={handleChange}>
+            onChange={handleChange}
+            className='input'>
                 <option value='Tree'onChange={handleChange}> Tree</option>
                 <option value='IndoorPlant'onChange={handleChange}> Indoor</option>
                 <option value='Shrub/Bush'onChange={handleChange}> Shrub/Bush</option>
@@ -94,17 +97,19 @@ function handleChange(e){
                 <option value='Cactus/Succulent'onChange={handleChange}> Cactus/ Succulent</option>
                 <option value='Other'> Other</option>
             </select>
+            <label  className='label'> Description:</label>
             <input
                 type='text'
+                className='input descriptionInput'
                 value={newForm.description}
                 name='description'
                 placeholder='Description'
                 onChange={handleChange} />
              {/* <textarea  value={newForm.description} onChange={handleChange} /> */}
-            <input type='submit' value='Add Plant' />
+            <input type='submit' value='Add Plant' className='submitNew' />
         </form>
 
-
+        </div>
     </div>
   )
 }

@@ -2,22 +2,22 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {useParams, useNavigate, Link} from 'react-router-dom'
 import EditForm from './EditForm'
-
+import Comment from '../components/Comment'
 
 
 const Show = () => {
     const [plant, setPlant]=useState(null)
     const {id}= useParams()
-    console.log(id)
+    console.log(`id show page ${id}`)
     const showURL= `https://p3-plants.herokuapp.com/plants/${id}`
-    const commentURL= `https://p3-plants.herokuapp.com/comments`
-    const commentDeleteURL= `https://p3-plants.herokuapp.com/comments/${id}`
+    // const commentURL= `https://p3-plants.herokuapp.com/comments`
+    // const commentDeleteURL= `https://p3-plants.herokuapp.com/comments/`
 
     const navigate= useNavigate()
-    const initComment={title:'', comment:''}
-    //const [editForm, setEditForm]=useState(null)
-    const [comments, setComments]= useState([])
-    const [commentForm, setCommentForm] = useState(initComment)
+    // const initComment={title:'', comment:''}
+    // //const [editForm, setEditForm]=useState(null)
+    // const [comments, setComments]= useState([])
+    // const [commentForm, setCommentForm] = useState(initComment)
     const getPlant= async ()=>{
         try{
             const response= await fetch(showURL)
@@ -42,33 +42,33 @@ const Show = () => {
     const loading =() =>{
         <h1>Loading.....</h1>
     }
-    const handleSubmit= async (e)=>{
-        try{e.preventDefault()
-         const newComment= {...commentForm}
-         console.log(newComment)
-         const res= await fetch(commentURL, {
-             method: 'POST',
-             headers:{
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify(newComment)
-         })
-         getComments(setComments)
-         setCommentForm(initComment)
-         navigate('/')
-     }catch(err){
-         console.log(err)
-     }
-     }
+    // const handleSubmit= async (e)=>{
+    //     try{e.preventDefault()
+    //      const newComment= {...commentForm}
+    //      console.log(newComment)
+    //      const res= await fetch(commentURL, {
+    //          method: 'POST',
+    //          headers:{
+    //              "Content-Type": "application/json"
+    //          },
+    //          body: JSON.stringify(newComment)
+    //      })
+    //      getComments(setComments)
+    //      setCommentForm(initComment)
+    //      navigate('/')
+    //  }catch(err){
+    //      console.log(err)
+    //  }
+    //  }
     
-    const handleChange=(e)=>{
-        setCommentForm({...commentForm, [e.target.name]: e.target.value})
+    // const handleChange=(e)=>{
+    //     setCommentForm({...commentForm, [e.target.name]: e.target.value})
        
-    }
-    const handleChangeId=(e)=>{
-        setCommentForm({...commentForm, [e.target.name]:id})
+    // }
+    // const handleChangeId=(e)=>{
+    //     setCommentForm({...commentForm, [e.target.name]:id})
        
-    }
+    // }
 
     const removePlant = async ()=>{
         try{
@@ -81,49 +81,46 @@ const Show = () => {
             console.log(err)
         }
     }
-    const removeComment = async ()=>{
-        try{
-            const options={method: "DELETE"}
-            const res= await fetch(commentDeleteURL, options)
-            const deletedComment= await res.json()
-            navigate('/')
+    // const removeComment = async ()=>{
+    //     try{
+    //         const options={method: "DELETE"}
+    //         const res= await fetch(`${commentDeleteURL}/${comment._id}`, options)
+    //         const deletedComment= await res.json()
+    //         navigate('/')
 
-        }catch(err){
-            console.log(err)
-        }
-    }
-    const getComments= async ()=> {
-        try{
-            const res= await fetch(commentURL)
-            const allComments= await res.json()
-            setComments(allComments)
-            console.log(allComments)
-        }catch(err){
-            console.log(err)
-        }
-    }
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
+    // const getComments= async ()=> {
+    //     try{
+    //         const res= await fetch(commentURL)
+    //         const allComments= await res.json()
+    //         setComments(allComments)
+    //         console.log(allComments)
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
     useEffect(()=>{
         getPlant()
-        getComments()
+       
     },[])
 
   return(
-    <div>
+    <div className='wholeShow'>
         {  plant ? loaded() : loading()}
         <button className='deleteButton' onClick={removePlant}>
             Remove Plant
         </button>
         <Link to={`/${id}/edit`} > Edit Plant Entry</Link>
-      
-      <div className='commentForm'>
+      <Comment 
+            id={id}
+            navigate={navigate}
+           />
+      {/* <div className='commentForm'>
         <form onSubmit={handleSubmit} >
-           <label> Title:</label>
-            <input
-                    type='text'
-                    value={commentForm.title}
-                    name='title'
-                    placeholder='Comment Title'
-                    onChange={handleChange} />
+         
             <textarea
                     value={commentForm.comment}
                     name='comment'
@@ -132,6 +129,7 @@ const Show = () => {
             <input 
                 value={commentForm.plants}
                 name='plants'
+                placeholder='Plant ID(auto-populates)'
                 onChange={handleChangeId}
                 />
             <input type='submit' value='Comment' />
@@ -144,9 +142,19 @@ const Show = () => {
             if (id===comment.plants){
             return(
                 <div className='oneCard'>
-                  <div className='commentTitle'>{comment.title}</div> 
+                 
                   <div className='commentcomment'>{comment.comment}</div> 
-                  <button className='deleteButton' onClick={removeComment}>
+                  <button className='deleteButton' onClick={ async ()=>{     try{
+            const options={method: "DELETE"}
+            const res= await fetch(`${commentDeleteURL}/${comment._id}`, options)
+            const deletedComment= await res.json()
+            navigate(`/${id}`)
+
+        }catch(err){
+            console.log(err)
+        }
+   
+    }}>
             Remove Comment
         </button>
                 </div >
@@ -155,7 +163,7 @@ const Show = () => {
         }):
         <h1>Loading Plants...</h1>}
         </h1>
-        </div>
+        </div> */}
     </div>
   )
        

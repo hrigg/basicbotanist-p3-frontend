@@ -20,14 +20,17 @@ const getPlants= async ()=> {
 useEffect(()=>{getPlants()}, [])
   return (
     <div className='allBody'>
-        <h1> All Plants: </h1> 
-       
+       <div className="allPlantsHeader">
+            <h1> All Plants: </h1>
+        </div> 
+    <div className='allCards'>
         {plants ? plants.map((plant, idx)=>{
+           
             return(
                 <div className='oneCard'>
                     <Link to={`/${plant._id}`} className="link">
                         <div>
-                     <img src={plant.image} alt={plant.name} className='homeCardImage'/>
+                     <img  key={idx} src={plant.image} alt={plant.name} className='homeCardImage'/>
                      <h2>{plant.name}</h2>
                         </div>
                      </Link>
@@ -35,7 +38,7 @@ useEffect(()=>{getPlants()}, [])
             )
         }):
         <h1>Loading Plants...</h1>}
-
+    </div>
         <Footer />
         {/* <Link to='/new'> Here</Link> */}
         {/* <New getPlants={getPlants} setPlants={setPlants}/> */}
