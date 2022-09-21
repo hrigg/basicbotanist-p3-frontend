@@ -56,14 +56,15 @@ import {useParams, useNavigate, Link} from 'react-router-dom'
 
 <>
     <div className='commentForm'>
+        <p> Add a Comment or Question</p>
     <form onSubmit={handleSubmit} >
      
-        <textarea
+        <textarea className='commentFormComment input'
                 value={commentForm.comment}
                 name='comment'
                 placeholder='Comment'
                 onChange={handleChange} />
-        <input 
+        <input className='comFormId input'
             value={commentForm.plants}
             name='plants'
             placeholder='Plant ID(auto-populates)'
@@ -82,7 +83,7 @@ import {useParams, useNavigate, Link} from 'react-router-dom'
             <div className='oneComment'>
              
               <div className='commentcomment'>{comment.comment}</div> 
-              <button className='deleteButton' onClick={ async ()=>{     try{
+              <button className='deleteCommentButton' onClick={ async ()=>{     try{
         const options={method: "DELETE"}
         const res= await fetch(`${commentDeleteURL}/${comment._id}`, options)
         const deletedComment= await res.json()

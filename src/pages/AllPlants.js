@@ -2,10 +2,11 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import Footer from '../components/Footer'
+import Filter from '../components/Filter'
+
 const AllPlants = (props) => {
 const [plants, setPlants]= useState([])
 const URL= 'https://p3-plants.herokuapp.com/plants'
-
 const getPlants= async ()=> {
     try{
         const response= await fetch(URL)
@@ -20,8 +21,10 @@ const getPlants= async ()=> {
 useEffect(()=>{getPlants()}, [])
   return (
     <div className='allBody'>
+       
        <div className="allPlantsHeader">
             <h1> All Plants: </h1>
+            <Filter />
         </div> 
     <div className='allCards'>
         {plants ? plants.map((plant, idx)=>{

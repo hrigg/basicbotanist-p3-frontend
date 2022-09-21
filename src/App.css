@@ -91,9 +91,7 @@
   margin: 5px;
 }
 
-.deleteCommentButton{
-  font-size: 5px;
-}
+
 /* /
 NEW FORM
  */
@@ -105,9 +103,9 @@ NEW FORM
   height: 500px;
   padding: 20px;
   width: 320px;
-  height: 100vw;
+  height: 90vw;
   color: #eee;
-
+  margin: auto;
  }
  .titleForm{
   color: #eee;
@@ -134,3 +132,20 @@ NEW FORM
   width: 250px;
   height: 200px;
 }
+
+.commentForm{
+  background-color: #15172b;
+  color: rgb(192, 204, 192);
+  width: 500px;
+  height: 150px;
+  border-radius: 5%;
+  box-sizing: border-box;
+  margin: auto;
+}
+.commentFormComment{
+  width: 400px;
+  
+}
+
+
+
