@@ -21,9 +21,10 @@ const getPlants= async ()=> {
 useEffect(()=>{getPlants()}, [])
   return (
     <div className='allBody'>
-       
+      
        <div className="allPlantsHeader">
-            <h1> All Plants: </h1>
+           
+            <h1>  🍃 BasicBotanist 🍃 <br/>All Plants: </h1>
             <Filter />
         </div> 
     <div className='allCards'>
